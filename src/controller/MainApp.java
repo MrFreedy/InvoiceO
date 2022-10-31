@@ -11,16 +11,10 @@ import service.database.DTBActions;
 
 
 public class MainApp {
-
     public static void main(String[] args) throws SQLException, InterruptedException {
         Initialization initialization = new Initialization();
         initialization.start();
         initialization.choiceStart();
-
-
-
-
-
 
     }
 }

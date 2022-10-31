@@ -26,8 +26,7 @@ public class Initialization {
         System.out.println("2. Display all invoices");
         System.out.println("3. Display an invoice");
         System.out.println("4. Update an invoice");
-        System.out.println("5. Delete an invoice");
-        System.out.println("6. Exit");
+        System.out.println("5. Exit");
         System.out.println("Please enter a number between 1 and 6 :");
         choiceStart();
     }
@@ -40,7 +39,7 @@ public class Initialization {
             case 1 -> createInvoice();
             case 2 -> displayAllInvoices();
             case 3 -> displayInvoice();
-            case 4 -> deleteInvoice();
+            case 4 -> updateInvoice();
             default -> System.out.println("You choose to exit");
         }
 
@@ -56,13 +55,15 @@ public class Initialization {
         DTBActions.displayAllInvoices();
     }
 
-    public static void displayInvoice() {
+    public static void displayInvoice() throws  SQLException {
         System.out.println("You choose to display an invoice");
+        DTBActions.displayOneInvoice();
+
     }
 
-    public static void deleteInvoice() throws SQLException {
-        System.out.println("You choose to delete an invoice");
-        DTBActions.deleteInvoice();
+    public static void updateInvoice() throws SQLException {
+        System.out.println("You choose to update an invoice");
+        DTBActions.updateInvoice();
     }
 
 }

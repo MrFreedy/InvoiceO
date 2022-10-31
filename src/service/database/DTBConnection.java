@@ -28,11 +28,6 @@ public class DTBConnection {
         }
     }
 
-    public static Connection connect() throws SQLException {
-        Connection conn= DriverManager.getConnection(url, user, password);
-        return conn;
-    }
-
     public static void close() {
         try {
             DriverManager.getConnection(url, user, password).close();
@@ -42,16 +37,15 @@ public class DTBConnection {
         }
     }
 
-    /*public void createInvoice() {
-        try (Connection conn = DriverManager.getConnection(url, user, password)) {
-            Statement stmt = conn.createStatement();
-            String sql = "INSERT INTO invoice (id, date, customer_id, total) VALUES (1, '2020-01-01', 1, 100)";
-            stmt.executeUpdate(sql);
-            System.out.println("Invoice created");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }*/
+    public static Connection connect() throws SQLException {
+        DTBConnection dtbConnection = new DTBConnection("localhost:3306/invoice", "root", "");
+        Connection conn = DriverManager.getConnection(url, user, password);
+        return conn;
+
+
+
+
+    }
 
 }
 
