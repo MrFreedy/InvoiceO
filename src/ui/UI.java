@@ -7,31 +7,36 @@ import java.util.*;
 
 import service.database.DTBActions;
 
-
-
-
 public class UI {
+
 
     private static final List<String> columnNames= new ArrayList<>();
     private static final List<String> dataGet = new ArrayList<>();
+
+
 
     public static void main(String[] args) throws SQLException {
         DTBActions.getNameColumns(columnNames);
         DTBActions.getDataFromColumns(dataGet);
 
-        System.out.println(dataGet.size());
 
         //convert columnNames to String[]
         String[] columnNamesArray = new String[columnNames.size()];
         columnNamesArray = columnNames.toArray(columnNamesArray);
-        System.out.println(Arrays.toString(columnNamesArray));
 
-        Object[][] data = new Object[][]{
+        Object[][] data = new Object[dataGet.size() / columnNamesArray.length][columnNamesArray.length];
 
-                {dataGet.get(0), dataGet.get(1), dataGet.get(2), dataGet.get(3), dataGet.get(4), dataGet.get(5), dataGet.get(6), dataGet.get(7), dataGet.get(8), dataGet.get(9), dataGet.get(10)},
-                {dataGet.get(11), dataGet.get(12), dataGet.get(13), dataGet.get(14), dataGet.get(15), dataGet.get(16), dataGet.get(17), dataGet.get(18), dataGet.get(19), dataGet.get(20), dataGet.get(21)},
+        // Loop to fill data
+        int k = 0;
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[i].length; j++) {
+                data[i][j] = dataGet.get(k);
+                k++;
+            }
+        }
 
-        };
+
+
 
         JTable table = new JTable(data, columnNamesArray);
 
