@@ -4,9 +4,9 @@ import java.sql.*;
 
 public class DTBConnection {
 
-    private static String url;
-    private static String user;
-    private static String password;
+    public static String url;
+    public static String user;
+    public static String password;
 
 
     public DTBConnection(String url, String user, String password) {
@@ -38,7 +38,7 @@ public class DTBConnection {
     }
 
     public static Connection connect() throws SQLException {
-        DTBConnection dtbConnection = new DTBConnection("localhost:3306/invoice", "root", "");
+        DTBConnection dtbConnection = new DTBConnection("db-mysql-lon1-83723-do-user-12354957-0.b.db.ondigitalocean.com:25060/invoice", user, password);
         Connection conn = DriverManager.getConnection(url, user, password);
         return conn;
 

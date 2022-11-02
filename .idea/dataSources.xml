@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/invoice</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="InvoiceO Server" uuid="07ac4a6c-62b7-444f-b5f4-55dab1149e5e">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://db-mysql-lon1-83723-do-user-12354957-0.b.db.ondigitalocean.com:25060/invoice</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
