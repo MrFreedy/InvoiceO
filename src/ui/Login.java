@@ -12,6 +12,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 
 import service.database.*;
@@ -31,10 +33,8 @@ public class Login {
         connectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String username = usernamefield.getText();
-                DTBConnection.user = username;
-                String password = passwordfield.getText();
-                DTBConnection.password = password;
+                DTBConnection.user = usernamefield.getText();
+                DTBConnection.password = passwordfield.getText();
                 try {
                     if(DTBConnection.connect()!= null){
                         try {
@@ -69,12 +69,28 @@ public class Login {
                 usernamefield.setText("");
             }
         });
+
+        //add key listener to password field to detect enter key
+
+        passwordfield.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    connectButton.doClick();
+                }
+            }
+        });
+
     }
 
 
-
-
     public static void main(String[] args) {
+        generateUI();
+
+    }
+
+    static void generateUI() {
         JFrame frame = new JFrame("InvoiceO");
         ImageIcon icon = new ImageIcon("src\\image\\invoice.png");
         frame.setIconImage(icon.getImage());
@@ -85,4 +101,7 @@ public class Login {
         frame.setVisible(true);
         frame.requestFocus();
     }
+
+
 }
+
