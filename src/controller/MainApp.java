@@ -15,6 +15,5 @@ public class MainApp {
         Initialization initialization = new Initialization();
         initialization.start();
         initialization.choiceStart();
-
     }
 }

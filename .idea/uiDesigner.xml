@@ -120,5 +120,10 @@
         <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
       </item>
     </group>
+    <group name="Implemented">
+      <item class="org.jdatepicker.impl.JDatePickerImpl" icon="image/calendar/calendar.png" removable="true" auto-create-binding="true" can-attach-label="false">
+        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="0" />
+      </item>
+    </group>
   </component>
 </project>

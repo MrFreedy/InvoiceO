@@ -46,7 +46,7 @@ public class UI {
 
 
         JFrame frame = new JFrame("Garage Michel - Invoice");
-        ImageIcon icon = new ImageIcon("src\\image\\invoice.png");
+        ImageIcon icon = new ImageIcon("src\\image\\table\\table-16.png");
 
         frame.setIconImage(icon.getImage());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

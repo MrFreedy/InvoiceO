@@ -7,6 +7,8 @@ import controller.start.Initialization;
 
 public class DTBActions {
     private static String customer_name, customer_address, seller_name, seller_address, product_name,date_sale,date_expiry, status ;
+
+    private java.sql.Date date_sale_sql, date_expiry_sql;
     private static int id_invoice,product_quantity;
     private static double price;
 
@@ -58,6 +60,15 @@ public class DTBActions {
         Initialization.restart();
         }
     }
+
+    public static void createInvoiceSimple(String customer_name, String customer_address, String seller_name, String seller_address,String product_name, int product_quantity, double price, java.sql.Date date_sale_sql, java.sql.Date date_expiry_sql, String status) throws SQLException {
+        Statement stmt = DTBConnection.connect().createStatement();{
+            String sql= "INSERT INTO garage_michel (customerName, customerAddress, sellerName, sellerAdress, product, quantity, price, dateSale, dateExpiry, statusInvoice) VALUES ('"+customer_name+"', '"+customer_address+"', '"+seller_name+"', '"+seller_address+"', '"+product_name+"', '"+product_quantity+"', '"+price+"', '"+date_sale_sql+"', '"+date_expiry_sql+"', '"+status+"')";
+            stmt.executeUpdate(sql);
+        }
+    }
+
+
     public static void displayAllInvoices() throws SQLException {
 
         Statement stmt = DTBConnection.connect().createStatement();{

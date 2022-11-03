@@ -38,6 +38,8 @@ public class HomePage {
     private JPanel side_menu;
     private JTextField db_name;
 
+    public static String url;
+
 
     DefaultListModel<String> listModel = new DefaultListModel<>();
     public HomePage() {
@@ -117,7 +119,8 @@ public class HomePage {
                 if(e.getClickCount() == 2){
                     String[] server = server_list.getSelectedValue().split(":");
                     String[] server2 = server[1].split("/");
-                    DTBConnection.url= "jdbc:mysql://"+server[0]+":"+server2[0]+"/"+server2[1];
+                    url= "jdbc:mysql://"+server[0]+":"+server2[0]+"/"+server2[1];
+                    DTBConnection.url= url;
                     Login.generateUI();
                 }
             }

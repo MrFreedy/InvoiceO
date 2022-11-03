@@ -17,6 +17,7 @@ import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 
 import service.database.*;
+import ui.CreatorMenu;
 
 
 public class Login {
@@ -28,19 +29,28 @@ public class Login {
     private JPasswordField passwordfield;
     private JButton connectButton;
 
+    public static String username;
+    public static String password;
 
     public Login(){
+
+
+
         connectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DTBConnection.user = usernamefield.getText();
-                DTBConnection.password = passwordfield.getText();
+                getUsername();
+                getPassword();
+                DTBConnection.user = username;
+                DTBConnection.password = password;
                 try {
                     if(DTBConnection.connect()!= null){
                         try {
                             UI.main(null);
                             JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
                             frame.dispose();
+                            CreatorMenu.generateUI();
+
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();
                         }
@@ -84,6 +94,16 @@ public class Login {
 
     }
 
+    public void getUsername() {
+        username = usernamefield.getText();
+        CreatorMenu.username = username;
+    }
+
+    public void getPassword() {
+        password = passwordfield.getText();
+        CreatorMenu.password = password;
+    }
+
 
     public static void main(String[] args) {
         generateUI();
@@ -92,7 +112,7 @@ public class Login {
 
     static void generateUI() {
         JFrame frame = new JFrame("InvoiceO");
-        ImageIcon icon = new ImageIcon("src\\image\\invoice.png");
+        ImageIcon icon = new ImageIcon("src\\image\\invoice\\invoice-16.png");
         frame.setIconImage(icon.getImage());
         frame.setContentPane(new Login().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
