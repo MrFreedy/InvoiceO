@@ -65,28 +65,6 @@
           </component>
         </children>
       </grid>
-      <component id="6e566" class="javax.swing.JTextField" binding="ip_server">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <horizontalAlignment value="0"/>
-          <text value="Enter the IP Address of your Database"/>
-        </properties>
-      </component>
-      <component id="2aadd" class="javax.swing.JTextField" binding="port_server">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <horizontalAlignment value="0"/>
-          <text value="Enter the Port of your Database"/>
-        </properties>
-      </component>
       <component id="edad" class="javax.swing.JList" binding="server_list">
         <constraints>
           <grid row="4" column="1" row-span="2" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -108,23 +86,14 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-14140810"/>
               <enabled value="true"/>
+              <foreground color="-1"/>
               <text value="Add"/>
             </properties>
           </component>
         </children>
       </grid>
-      <component id="457d5" class="javax.swing.JTextField" binding="db_name">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <horizontalAlignment value="0"/>
-          <text value="Name of your Database"/>
-        </properties>
-      </component>
     </children>
   </grid>
 </form>

@@ -1,0 +1,13 @@
+
+Œ
+java:S1130"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(š˜»i
+D
+java:S2440".Remove this instantiation of "Initialization".(Å×¥Œ
+K
+java:S2209"5Change this instance-reference to a static reference.(ç£Š—
+K
+java:S2209"5Change this instance-reference to a static reference.(ñî÷‰
+Q
+java:S1128";Remove this unused import 'service.database.DTBConnection'.(öåç
+S
+java:S1128	"8Remove this unused import 'service.database.DTBActions'.(·²ÊÅøÿÿÿÿ

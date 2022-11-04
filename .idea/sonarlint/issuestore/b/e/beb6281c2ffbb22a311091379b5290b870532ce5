@@ -1,0 +1,12 @@
+
+2
+java:S1118"Hide this public constructor.(à¿í6
+;
+java:S3010" Remove this assignment of "url".(öã›®ÿÿÿÿÿ
+<
+java:S3010"!Remove this assignment of "user".(¤±¾¡ûÿÿÿÿ
+;
+java:S3010"%Remove this assignment of "password".(ºÅ¯ã
+b	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÚèw
+M
+java:S1481 "2Remove this unused "dtbConnection" local variable.(ä‹Ó£üÿÿÿÿ
