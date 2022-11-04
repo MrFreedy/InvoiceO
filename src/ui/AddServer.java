@@ -9,17 +9,20 @@
 package ui;
 
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
+import com.opencsv.CSVWriter;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.event.*;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class AddServer {
     private JTextField ip_server;
     private JTextField port_server;
     private JTextField db_name;
     private JTextField titleDatabase;
-    private JPanel panel1;
+    JPanel panel1;
     private JLabel connectionLabel;
     private JLabel ipLabel;
     private JLabel portLabel;
@@ -32,6 +35,9 @@ public class AddServer {
 
 
     public AddServer() {
+
+
+
         titleDatabase.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -149,6 +155,14 @@ public class AddServer {
                 }else if(db_name.getText().equals("eg. invoicedtb") || db_name.getText().equals("")){
                     JOptionPane.showMessageDialog(null, "Please enter a valid database name");
                 }else{
+                    String[] data1 = {titleDatabase.getText(), ip_server.getText(), port_server.getText(), db_name.getText()};
+                    try {
+                        CSVWriter writer = new CSVWriter(new FileWriter("src\\data\\database.csv", true));
+                        writer.writeNext(data1);
+                        writer.close();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
                     JOptionPane.showMessageDialog(null, "Database server added successfully");
                     JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
                     frame.dispose();
@@ -157,7 +171,7 @@ public class AddServer {
         });
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         try{
             FlatOneDarkIJTheme.setup();
         }catch (Exception e){
@@ -172,7 +186,6 @@ public class AddServer {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        frame.requestFocus();
 
     }
 }

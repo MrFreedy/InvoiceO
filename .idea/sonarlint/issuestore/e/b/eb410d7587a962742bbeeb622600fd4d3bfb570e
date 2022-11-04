@@ -1,105 +1,0 @@
-
-y
-java:S1192K"\Define a constant instead of duplicating this literal "SELECT * FROM garage_michel" 3 times.(¨Òÿ8ä¥÷ÔÃ0
-k
-java:S1192N"NDefine a constant instead of duplicating this literal "statusInvoice" 4 times.(­éú8æ¥÷ÔÃ0
-z	java:S135j"YReduce the total number of break and continue statements in this loop to use at most one.(íôÚÇşÿÿÿÿ8è¥÷ÔÃ0
-^	java:S107@"=Method has 10 parameters, which is greater than 7 authorized.(ÚÌÄ‰ıÿÿÿÿ8ê¥÷ÔÃ0
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰µÇÊøÿÿÿÿ8ë¥÷ÔÃ0
-r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£©Ğ“ÿÿÿÿÿ8ì¥÷ÔÃ0
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜’¢Ñ8ì¥÷ÔÃ0
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“øéã8í¥÷ÔÃ0
-m	java:S117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦¥•é8í¥÷ÔÃ0
-m	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ğ¼Á8ï¥÷ÔÃ0
-l	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô‚a8ğ¥÷ÔÃ0
-m	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«É×¹8ñ¥÷ÔÃ0
-m	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©¬Üè8ñ¥÷ÔÃ0
-r	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«‡ÍÉıÿÿÿÿ8ò¥÷ÔÃ0
-r	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÌÄ‰ıÿÿÿÿ8ó¥÷ÔÃ0
-r	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÌÄ‰ıÿÿÿÿ8ó¥÷ÔÃ0
-r	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÌÄ‰ıÿÿÿÿ8ô¥÷ÔÃ0
-r	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÌÄ‰ıÿÿÿÿ8õ¥÷ÔÃ0
-r	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÌÄ‰ıÿÿÿÿ8ö¥÷ÔÃ0
-r	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÌÄ‰ıÿÿÿÿ8ö¥÷ÔÃ0
-r	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÌÄ‰ıÿÿÿÿ8ø¥÷ÔÃ0
-r	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÌÄ‰ıÿÿÿÿ8ù¥÷ÔÃ0
-m	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñÏëÍ8ú¥÷ÔÃ0
-m	java:S117d"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñÏëÍ8ú¥÷ÔÃ0
-O
-java:S11998"-Extract this nested code block into a method.(¡åüìüÿÿÿÿ8ş¥÷ÔÃ0
-O
-java:S1199A"-Extract this nested code block into a method.(¡åüìüÿÿÿÿ8ÿ¥÷ÔÃ0
-O
-java:S1199J"-Extract this nested code block into a method.(¡åüìüÿÿÿÿ8ÿ¥÷ÔÃ0
-O
-java:S1199X"-Extract this nested code block into a method.(¡åüìüÿÿÿÿ8€¦÷ÔÃ0
-O
-java:S1199f"-Extract this nested code block into a method.(¡åüìüÿÿÿÿ8€¦÷ÔÃ0
-O
-java:S1199{"-Extract this nested code block into a method.(¡åüìüÿÿÿÿ8€¦÷ÔÃ0
-P
-java:S1199‡"-Extract this nested code block into a method.(¡åüìüÿÿÿÿ8¦÷ÔÃ0
-i
-java:S2095J"GUse try-with-resources or close this "Statement" in a "finally" clause.(¡åüìüÿÿÿÿ8£§÷ÔÃ0
-i
-java:S2095{"GUse try-with-resources or close this "Statement" in a "finally" clause.(¡åüìüÿÿÿÿ8‘§÷ÔÃ0
-j
-java:S2095‡"GUse try-with-resources or close this "Statement" in a "finally" clause.(¡åüìüÿÿÿÿ8¥§÷ÔÃ0
-i
-java:S2095f"GUse try-with-resources or close this "Statement" in a "finally" clause.(¡åüìüÿÿÿÿ8¤§÷ÔÃ0
-i
-java:S2095A"GUse try-with-resources or close this "Statement" in a "finally" clause.(¡åüìüÿÿÿÿ8¥§÷ÔÃ0
-i
-java:S2095X"GUse try-with-resources or close this "Statement" in a "finally" clause.(¡åüìüÿÿÿÿ8¥§÷ÔÃ0
-i
-java:S20958"GUse try-with-resources or close this "Statement" in a "finally" clause.(¡åüìüÿÿÿÿ8’§÷ÔÃ0
-y	java:S116"XRename this field "date_sale_sql" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï¡­ÿÿÿÿÿ8§§÷ÔÃ0
-{	java:S116"ZRename this field "date_expiry_sql" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï¡­ÿÿÿÿÿ8§§÷ÔÃ0
-n
-java:S3008	"XRename this field "customer_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×æ‘Ø
-q
-java:S3008	"[Rename this field "customer_address" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×æ‘Ø
-l
-java:S3008	"VRename this field "seller_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×æ‘Ø
-o
-java:S3008	"YRename this field "seller_address" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×æ‘Ø
-m
-java:S3008	"WRename this field "product_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×æ‘Ø
-j
-java:S3008	"TRename this field "date_sale" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×æ‘Ø
-l
-java:S3008	"VRename this field "date_expiry" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×æ‘Ø
-r
-java:S3008"URename this field "id_invoice" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·µ‰ø8©§÷ÔÃ0
-x
-java:S3008"[Rename this field "product_quantity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·µ‰ø8ª§÷ÔÃ0
-c
-java:S1659	"MDeclare "customer_address" and all following declarations on a separate line.(×æ‘Ø
-O
-java:S1659"-Declare "date_expiry_sql" on a separate line.(ï¡­ÿÿÿÿÿ8®§÷ÔÃ0
-K
-java:S1659".Declare "product_quantity" on a separate line.(·µ‰ø8¯§÷ÔÃ0
-u
-java:S1450	"_Remove the "customer_address" field and declare it as a local variable in the relevant methods.(×æ‘Ø
-r
-java:S1450	"\Remove the "customer_name" field and declare it as a local variable in the relevant methods.(×æ‘Ø
-p
-java:S1450	"ZRemove the "date_expiry" field and declare it as a local variable in the relevant methods.(×æ‘Ø
-n
-java:S1450	"XRemove the "date_sale" field and declare it as a local variable in the relevant methods.(×æ‘Ø
-q
-java:S1450"TRemove the "price" field and declare it as a local variable in the relevant methods.(çôæ²8±§÷ÔÃ0
-q
-java:S1450	"[Remove the "product_name" field and declare it as a local variable in the relevant methods.(×æ‘Ø
-u
-java:S1450"_Remove the "product_quantity" field and declare it as a local variable in the relevant methods.(·µ‰ø
-z
-java:S1450	"]Remove the "seller_address" field and declare it as a local variable in the relevant methods.(×æ‘Ø8¸©êÔÃ0
-w
-java:S1450	"ZRemove the "seller_name" field and declare it as a local variable in the relevant methods.(×æ‘Ø8•®ìÔÃ0
-r
-java:S1450	"URemove the "status" field and declare it as a local variable in the relevant methods.(×æ‘Ø8•®ìÔÃ0
-S
-java:S1068"1Remove this unused "date_sale_sql" private field.(ï¡­ÿÿÿÿÿ8Ú§÷ÔÃ0
-U
-java:S1068"3Remove this unused "date_expiry_sql" private field.(ï¡­ÿÿÿÿÿ8Û§÷ÔÃ0

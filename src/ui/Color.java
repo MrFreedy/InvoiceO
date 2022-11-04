@@ -12,7 +12,7 @@ import javax.swing.plaf.ColorUIResource;
 
 public class Color {
     static ColorUIResource focusedField = new ColorUIResource(44, 58, 73);
-    static ColorUIResource defaultColor = new ColorUIResource(40, 44, 52);
+    static ColorUIResource defaultColor = new ColorUIResource(61 , 66, 75);
 
     static ColorUIResource standardBlue = new ColorUIResource(0, 115, 255);
 }
