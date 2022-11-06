@@ -10,18 +10,16 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.sql.SQLException;
 
+import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import service.database.*;
 import ui.CreatorMenu;
 
 
 public class Login {
-    private JPanel panel1;
+    JPanel panel1;
     private JLabel label1;
     private JTextField usernamefield;
     private JLabel userfield_title;
@@ -32,17 +30,23 @@ public class Login {
     public static String username;
     public static String password;
 
+    public static String url;
+
     public Login(){
 
-
+        passwordfield.setEchoChar((char) 0);
+        passwordfield.setText("Enter your password");
 
         connectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getUsername();
                 getPassword();
+                getURL();
                 DTBConnection.user = username;
                 DTBConnection.password = password;
+                DTBConnection.url = url;
+
                 try {
                     if(DTBConnection.connect()!= null){
                         try {
@@ -56,10 +60,12 @@ public class Login {
                         }
                         }
                 } catch (SQLException ex) {
-                    System.out.println("Error");
                     JFrame frame_error_login= new JFrame("Error");
+                    ImageIcon icon = new ImageIcon("src\\image\\error\\error-16.png");
+                    frame_error_login.setIconImage(icon.getImage());
                     frame_error_login.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                     JLabel label_error_login = new JLabel("<html><font color='red'>Incorrect username or password !</font></html>");
+                    label_error_login.setFont(label_error_login.getFont().deriveFont(14.0f));
                     frame_error_login.add(label_error_login);
                     label_error_login.setHorizontalAlignment(SwingConstants.CENTER);
                     frame_error_login.setSize(300, 100);
@@ -73,50 +79,95 @@ public class Login {
 
         });
 
-        usernamefield.addMouseListener(new java.awt.event.MouseAdapter() {
+        connectButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                usernamefield.setText("");
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                connectButton.setBackground(Color.standardBlue);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                connectButton.setBackground(Color.defaultButtonColor);
             }
         });
 
-        //add key listener to password field to detect enter key
 
-        passwordfield.addKeyListener(new KeyAdapter() {
+        usernamefield.addFocusListener(new FocusListener() {
             @Override
-            public void keyPressed(KeyEvent e) {
-                super.keyPressed(e);
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    connectButton.doClick();
+            public void focusGained(FocusEvent e) {
+                if(!usernamefield.getText().equals("Enter your username")){
+                }else {
+                    usernamefield.setText("");
                 }
+                usernamefield.setBackground(Color.focusedField);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if(usernamefield.getText().equals("")){
+                    usernamefield.setText("Enter your username");
+                }
+                usernamefield.setBackground(Color.defaultColor);
             }
         });
 
+        passwordfield.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if(!passwordfield.getText().equals("Enter your password")){
+                }else {
+                    passwordfield.setEchoChar('*');
+                    passwordfield.setText("");
+                }
+                passwordfield.setBackground(Color.focusedField);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if(passwordfield.getText().equals("")){
+                    passwordfield.setEchoChar((char) 0);
+                    passwordfield.setText("Enter your password");
+                }
+                passwordfield.setBackground(Color.defaultColor);
+            }
+        });
     }
 
     public void getUsername() {
         username = usernamefield.getText();
-        CreatorMenu.username = username;
     }
 
-    public void getPassword() {
+    private void getPassword() {
         password = passwordfield.getText();
-        CreatorMenu.password = password;
     }
 
+    private static void getURL() {
+        url="jdbc:mysql://"+HomePage.url;
+    }
 
     public static void main(String[] args) {
         generateUI();
-
     }
 
+
+
     static void generateUI() {
+        try{
+            FlatOneDarkIJTheme.setup();
+
+        } catch( Exception ex ) {
+            System.err.println( "Failed to initialize LaF" );
+        }
         JFrame frame = new JFrame("InvoiceO");
         ImageIcon icon = new ImageIcon("src\\image\\invoice\\invoice-16.png");
         frame.setIconImage(icon.getImage());
         frame.setContentPane(new Login().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
+        frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        frame.setSize(300, 300);
+        frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.requestFocus();

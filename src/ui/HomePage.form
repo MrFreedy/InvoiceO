@@ -87,7 +87,7 @@
               </grid>
             </constraints>
             <properties>
-              <enabled value="false"/>
+              <enabled value="true"/>
               <foreground color="-1"/>
               <horizontalAlignment value="11"/>
               <horizontalTextPosition value="10"/>
@@ -117,8 +117,10 @@
           <component id="d7d2b" class="javax.swing.JList" binding="list1" default-binding="true">
             <constraints/>
             <properties>
+              <foreground color="-1"/>
               <layoutOrientation value="0"/>
               <model/>
+              <selectionBackground color="-13878711"/>
             </properties>
           </component>
         </children>

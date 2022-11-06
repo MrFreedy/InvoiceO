@@ -10,9 +10,11 @@ package ui;
 
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import com.opencsv.CSVWriter;
+import com.opencsv.exceptions.CsvException;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -35,6 +37,7 @@ public class AddServer {
 
 
     public AddServer() {
+
 
 
 
@@ -78,7 +81,7 @@ public class AddServer {
             }
         });
 
-        port_server.addFocusListener(new FocusAdapter() {
+        port_server.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
                 if(!port_server.getText().equals("eg. 3306")){
@@ -89,11 +92,10 @@ public class AddServer {
                 port_server.setBackground(Color.focusedField);
             }
 
+            @Override
             public void focusLost(FocusEvent e) {
-                if (port_server.getText().isEmpty()) {
-                    if (port_server.getText().equals("")) {
-                        port_server.setText("eg.3306");
-                    }
+                if(port_server.getText().equals("")){
+                    port_server.setText("eg. 3306");
                 }
                 port_server.setBackground(Color.defaultColor);
             }
@@ -160,15 +162,70 @@ public class AddServer {
                         CSVWriter writer = new CSVWriter(new FileWriter("src\\data\\database.csv", true));
                         writer.writeNext(data1);
                         writer.close();
+                        successMessage();
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "Error adding database server");
                     }
-                    JOptionPane.showMessageDialog(null, "Database server added successfully");
-                    JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
-                    frame.dispose();
                 }
             }
         });
+    }
+
+    private static void refreshPage() throws IOException, CsvException {
+        JFrame frameRefresh = new JFrame("HomePage");
+        frameRefresh.setContentPane(new HomePage().panel1);
+        frameRefresh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frameRefresh.getRootPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        frameRefresh.pack();
+        frameRefresh.setLocationRelativeTo(null);
+        frameRefresh.setVisible(true);
+        frameRefresh.setResizable(false);
+        frameRefresh.requestFocus();
+
+    }
+
+    private void successMessage(){
+        JFrame frame_success= new JFrame("Success");
+        ImageIcon icon = new ImageIcon("src\\image\\validate\\validate-16.png");
+        frame_success.setIconImage(icon.getImage());
+        frame_success.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        JLabel label_success = new JLabel("<html><font color='green'>Database server added successfully !</font></html>");
+        JButton okBtn = new JButton("OK");
+        okBtn.setBackground(Color.standardBlue);
+        okBtn.setForeground(Color.white);
+        okBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                frame.dispose();
+                frame_success.dispose();
+
+                try {
+                    refreshPage();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                } catch (CsvException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+        //put okBtn in South/East frame_success
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        buttonPanel.add(okBtn);
+        frame_success.add(buttonPanel, BorderLayout.SOUTH);
+        okBtn.setPreferredSize(new Dimension(100, 30));
+        frame_success.add(label_success, BorderLayout.NORTH);
+
+
+        label_success.setFont(label_success.getFont().deriveFont(14.0f));
+        frame_success.add(label_success);
+        label_success.setHorizontalAlignment(SwingConstants.CENTER);
+        frame_success.setSize(250, 150);
+        frame_success.setResizable(false);
+        frame_success.setLocationRelativeTo(null);
+        frame_success.setVisible(true);
+
     }
 
     public static void main(String[] args){
@@ -186,6 +243,8 @@ public class AddServer {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setResizable(false);
+
 
     }
 }

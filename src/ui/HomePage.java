@@ -14,17 +14,16 @@ import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+import java.util.Vector;
 
 
 public class HomePage {
-    private JPanel panel1;
+    JPanel panel1;
     private JList list1;
     private JButton addBtn;
     private JPanel sideMenu;
@@ -37,50 +36,50 @@ public class HomePage {
 
     private JTextField db_name;
 
+    public static String db_name_value;
+
     public static String url;
 
 
 
 
     public HomePage() throws IOException, CsvException {
+        //add button to scrollServer from csv file
 
         try{
             CSVReader reader = new CSVReader(new FileReader("src\\data\\database.csv"));
             List<String[]> r = reader.readAll();
             DefaultListModel listModel = new DefaultListModel();
             for(String[] row : r){
-                listModel.addElement(row[0]);//row[0] is the name of the database
+                listModel.addElement(row[0]);//row[0] is the name of the server
+
             }
+
             list1.setModel(listModel);
+            list1.setFixedCellHeight(50);
         }catch (Exception e){
             System.out.println(e);
         }
 
 
-
-
-
-    /*    deleteBtn.addActionListener(new ActionListener() {
+        list1.addFocusListener(new FocusAdapter() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                int index = list1.getSelectedIndex();
-                listModel.remove(index);
-                if(listModel.isEmpty()){
-                    deleteBtn.setEnabled(false);
-                    editBtn.setEnabled(false);
-                }
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                editBtn.setEnabled(true);
+                deleteBtn.setEnabled(true);
 
             }
-        });*/
-/*
-        editBtn.addActionListener(new ActionListener() {
+
             @Override
-            public void actionPerformed(ActionEvent e) {
-                int index = list1.getSelectedIndex();
-                String element = (String) listModel.getElementAt(index);
-                db_name.setText(element);
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
+                editBtn.setEnabled(false);
+                deleteBtn.setEnabled(false);
+
             }
-        });*/
+        });
+
 
         addBtn.setIconTextGap(25);
         aboutBtn.setIconTextGap(25);
@@ -91,15 +90,19 @@ public class HomePage {
         addBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame("Add Server");
-                frame.setContentPane(new AddServer().panel1);
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
-                frame.setResizable(false);
-                frame.requestFocus();
+                JFrame frameAddServer = new JFrame("Add Server");
+                frameAddServer.setContentPane(new AddServer().panel1);
+                frameAddServer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frameAddServer.getRootPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+                frameAddServer.pack();
+                frameAddServer.setLocationRelativeTo(null);
+                frameAddServer.setVisible(true);
+                frameAddServer.setResizable(false);
+                frameAddServer.requestFocus();
+                JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                frame.dispose();
+
+
             }
         });
 
@@ -114,7 +117,7 @@ public class HomePage {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                addBtn.setBackground(Color.defaultColor);
+                addBtn.setBackground(Color.defaultButtonColor);
             }
         });
 
@@ -128,7 +131,7 @@ public class HomePage {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                editBtn.setBackground(Color.defaultColor);
+                editBtn.setBackground(Color.defaultButtonColor);
             }
         });
 
@@ -142,7 +145,7 @@ public class HomePage {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                deleteBtn.setBackground(Color.defaultColor);
+                deleteBtn.setBackground(Color.defaultButtonColor);
             }
         });
 
@@ -156,7 +159,7 @@ public class HomePage {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                settingsBtn.setBackground(Color.defaultColor);
+                settingsBtn.setBackground(Color.defaultButtonColor);
             }
         });
 
@@ -170,11 +173,57 @@ public class HomePage {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                aboutBtn.setBackground(Color.defaultColor);
+                aboutBtn.setBackground(Color.defaultButtonColor);
             }
         });
 
 
+        aboutBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("About");
+                frame.setContentPane(new About().panel1);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+                frame.setSize(680, 440);
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+                frame.setResizable(false);
+                frame.requestFocus();
+            }
+        });
+
+        list1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getClickCount() == 2) {
+                    System.out.println("Double clicked"+list1.getSelectedValue());
+                    db_name_value = list1.getSelectedValue().toString();
+                    int index = list1.getSelectedIndex();
+                    //get CSV element via index
+                    CSVReader reader = null;
+                    try {
+                        reader = new CSVReader(new FileReader("src\\data\\database.csv"));
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    List<String[]> r = null;
+                    try {
+                        r = reader.readAll();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (CsvException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    String[] row = r.get(index);
+                    url = row[1]+":"+row[2]+"/"+row[3];
+                    openLoginPage();
+
+                }
+            }
+
+        });
     }
 
 
@@ -190,11 +239,24 @@ public class HomePage {
 
         frame.setContentPane(new HomePage().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setResizable(false);
         frame.requestFocus();
 
+    }
+
+    public void openLoginPage(){
+        JFrame frame = new JFrame("Login");
+        frame.setContentPane(new Login().panel1);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        frame.setSize(300,300);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setResizable(false);
+        frame.requestFocus();
     }
 }

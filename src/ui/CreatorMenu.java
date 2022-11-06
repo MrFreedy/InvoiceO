@@ -50,7 +50,7 @@ public class CreatorMenu {
     public static String username ;
     public static String password ;
 
-    private String url=HomePage.url;
+    public static String url=HomePage.url;
 
     public CreatorMenu() {
         createButton.addActionListener(new ActionListener() {
