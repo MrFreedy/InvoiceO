@@ -15,7 +15,6 @@ import java.sql.SQLException;
 
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import service.database.*;
-import ui.CreatorMenu;
 
 
 public class Login {
@@ -49,16 +48,10 @@ public class Login {
 
                 try {
                     if(DTBConnection.connect()!= null){
-                        try {
-                            UI.main(null);
-                            JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
-                            frame.dispose();
-                            CreatorMenu.generateUI();
-
-                        } catch (SQLException throwables) {
-                            throwables.printStackTrace();
-                        }
-                        }
+                        Idle.main(null);
+                        JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                        frame.dispose();
+                    }
                 } catch (SQLException ex) {
                     JFrame frame_error_login= new JFrame("Error");
                     ImageIcon icon = new ImageIcon("src\\image\\error\\error-16.png");
@@ -83,13 +76,13 @@ public class Login {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                connectButton.setBackground(Color.standardBlue);
+                connectButton.setBackground(Color.azureRadiance);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                connectButton.setBackground(Color.defaultButtonColor);
+                connectButton.setBackground(Color.mako);
             }
         });
 
@@ -101,7 +94,7 @@ public class Login {
                 }else {
                     usernamefield.setText("");
                 }
-                usernamefield.setBackground(Color.focusedField);
+                usernamefield.setBackground(Color.pickledBluewood);
             }
 
             @Override
@@ -121,7 +114,7 @@ public class Login {
                     passwordfield.setEchoChar('*');
                     passwordfield.setText("");
                 }
-                passwordfield.setBackground(Color.focusedField);
+                passwordfield.setBackground(Color.pickledBluewood);
             }
 
             @Override

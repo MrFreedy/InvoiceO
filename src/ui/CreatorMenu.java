@@ -9,6 +9,7 @@
 package ui;
 
 
+import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import org.jdatepicker.impl.JDatePickerImpl;
 
 import javax.swing.*;
@@ -128,9 +129,10 @@ public class CreatorMenu {
 
 
     public static void main(String[] args) {
+        FlatOneDarkIJTheme.setup();
         JFrame frame = new JFrame("CreatorMenu");
         frame.setContentPane(new CreatorMenu().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(750,500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

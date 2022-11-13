@@ -13,7 +13,6 @@ import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileWriter;
@@ -49,7 +48,7 @@ public class AddServer {
                 }else{
                     titleDatabase.setText("");
                 }
-                titleDatabase.setBackground(Color.focusedField);
+                titleDatabase.setBackground(Color.pickledBluewood);
             }
             @Override
             public void focusLost(FocusEvent e) {
@@ -69,7 +68,7 @@ public class AddServer {
                     ip_server.setText("");
                 }
 
-                ip_server.setBackground(Color.focusedField);
+                ip_server.setBackground(Color.pickledBluewood);
             }
 
             @Override
@@ -89,7 +88,7 @@ public class AddServer {
                 }else {
                     port_server.setText("");
                 }
-                port_server.setBackground(Color.focusedField);
+                port_server.setBackground(Color.pickledBluewood);
             }
 
             @Override
@@ -109,7 +108,7 @@ public class AddServer {
                 }else {
                     db_name.setText("");
                 }
-                db_name.setBackground(Color.focusedField);
+                db_name.setBackground(Color.pickledBluewood);
             }
 
             @Override
@@ -126,7 +125,7 @@ public class AddServer {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                cancelBtn.setBackground(Color.standardBlue);
+                cancelBtn.setBackground(Color.azureRadiance);
             }
 
             @Override
@@ -192,7 +191,7 @@ public class AddServer {
         frame_success.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         JLabel label_success = new JLabel("<html><font color='green'>Database server added successfully !</font></html>");
         JButton okBtn = new JButton("OK");
-        okBtn.setBackground(Color.standardBlue);
+        okBtn.setBackground(Color.azureRadiance);
         okBtn.setForeground(Color.white);
         okBtn.addActionListener(new ActionListener() {
             @Override

@@ -19,7 +19,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
-import java.util.Vector;
 
 
 public class HomePage {
@@ -36,7 +35,7 @@ public class HomePage {
 
     private JTextField db_name;
 
-    public static String db_name_value;
+    public static String db_name_value = null;
 
     public static String url;
 
@@ -111,13 +110,13 @@ public class HomePage {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                addBtn.setBackground(Color.standardBlue);
+                addBtn.setBackground(Color.azureRadiance);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                addBtn.setBackground(Color.defaultButtonColor);
+                addBtn.setBackground(Color.mako);
             }
         });
 
@@ -125,13 +124,13 @@ public class HomePage {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                editBtn.setBackground(Color.standardBlue);
+                editBtn.setBackground(Color.azureRadiance);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                editBtn.setBackground(Color.defaultButtonColor);
+                editBtn.setBackground(Color.mako);
             }
         });
 
@@ -139,13 +138,13 @@ public class HomePage {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                deleteBtn.setBackground(Color.standardBlue);
+                deleteBtn.setBackground(Color.azureRadiance);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                deleteBtn.setBackground(Color.defaultButtonColor);
+                deleteBtn.setBackground(Color.mako);
             }
         });
 
@@ -153,13 +152,13 @@ public class HomePage {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                settingsBtn.setBackground(Color.standardBlue);
+                settingsBtn.setBackground(Color.azureRadiance);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                settingsBtn.setBackground(Color.defaultButtonColor);
+                settingsBtn.setBackground(Color.mako);
             }
         });
 
@@ -167,13 +166,13 @@ public class HomePage {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                aboutBtn.setBackground(Color.standardBlue);
+                aboutBtn.setBackground(Color.azureRadiance);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                aboutBtn.setBackground(Color.defaultButtonColor);
+                aboutBtn.setBackground(Color.mako);
             }
         });
 
