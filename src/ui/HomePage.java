@@ -31,10 +31,6 @@ public class HomePage {
     private JButton deleteBtn;
     private JButton editBtn;
     private JScrollPane scrollServerPane;
-
-
-    private JTextField db_name;
-
     public static String db_name_value = null;
 
     public static String url;
@@ -197,10 +193,8 @@ public class HomePage {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if (e.getClickCount() == 2) {
-                    System.out.println("Double clicked"+list1.getSelectedValue());
                     db_name_value = list1.getSelectedValue().toString();
                     int index = list1.getSelectedIndex();
-                    //get CSV element via index
                     CSVReader reader = null;
                     try {
                         reader = new CSVReader(new FileReader("src\\data\\database.csv"));

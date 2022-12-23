@@ -1,0 +1,56 @@
+@startuml
+class DTBConnection{
++ String url
++ String user
++ String password
++connect():Connect
+}
+
+class DTBActions{
+- String customer_name
+- String customer_address
+- String seller_name
+- String seller_address
+- String product_name
+- String date_sale
+- String date_expiry
+- String status
+- int id_invoice
+- product_quantity
+- double price
++createInvoice(customer_name:string, customer_address:string, seller_name:string, seller_address:string, product_name:string, product_quantity:int, price:double, date_sale:java.sql.Date, date_expiry:java.sql.Date, status:string)
++displayOneInvoice()
++displayAllInvoices()
++updateInvoice()
++getNameColumns(list:list<string>)
++getDataFromColumns(list:list<string>)
+}
+
+class Color{
++ ColorUIResource pickledBluewood
++ ColorUIResource defaultColor
++ ColorUIResource shark
++ ColorUIResource white
++ ColorUIResource mako
++ ColorUIResource lochmara
++ ColorUIResource azureRadiance
++ ColorUIResource monza
+}
+
+class HomePage{
+- JPanel panel1
+- JList list1
+- JButton addBtn
+- JButton settingsBtn
+- JButton aboutBtn
+- JButton deleteBtn
+- JButton editBtn
+- JScrollPane scrollServerPane
++ String db_name_value = null
++ String url
+
++ HomePage()
++ openLoginPage()
+
+}
+@enduml

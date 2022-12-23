@@ -94,7 +94,6 @@ public class Idle {
             public void actionPerformed(ActionEvent e) {
                 try {
                     UI.main(null);
-                    /*loadData();*/
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }

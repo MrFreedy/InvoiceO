@@ -7,8 +7,6 @@ import controller.start.Initialization;
 
 public class DTBActions {
     private static String customer_name, customer_address, seller_name, seller_address, product_name,date_sale,date_expiry, status ;
-
-    private java.sql.Date date_sale_sql, date_expiry_sql;
     private static int id_invoice,product_quantity;
     private static double price;
 
@@ -131,7 +129,7 @@ public class DTBActions {
         }
     }
 
-    public static void getDataFromColumns(List<String> list) throws SQLException{
+    public static void getDataColumns(List<String> list) throws SQLException{
         Statement stmt = DTBConnection.connect().createStatement();{
             String sql = "SELECT * FROM garage_michel";
             ResultSet rs = stmt.executeQuery(sql);

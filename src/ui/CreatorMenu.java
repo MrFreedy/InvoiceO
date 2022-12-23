@@ -47,7 +47,6 @@ public class CreatorMenu {
     private JDatePickerImpl JDatePickerExpiry;
     private JTextField sellerName;
 
-    //get text from usernametextfield from Login
     public static String username ;
     public static String password ;
 
@@ -58,9 +57,6 @@ public class CreatorMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    DTBConnection.url = url;
-                    DTBConnection.user = username;
-                    DTBConnection.password = password;
                     DTBConnection.connect();
                     DTBActions.createInvoiceSimple(customerName.getText(),customerAddress.getText(),sellerName.getText(),sellerAddress.getText(),product.getText(),Integer.parseInt(quantity.getText()),Double.parseDouble(price.getText()),convertDate(getDateSale()),convertDate(getDateExpiry()),selectionRadioButton());
                 } catch (Exception exception) {
