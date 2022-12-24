@@ -77,6 +77,19 @@ public class CreatorMenu {
 
             }
         });
+        radioButtonPending.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                radioButtonTransmitted.setSelected(false);
+            }
+        });
+
+        radioButtonTransmitted.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                radioButtonPending.setSelected(false);
+            }
+        });
     }
 
     public String getDateSale() {

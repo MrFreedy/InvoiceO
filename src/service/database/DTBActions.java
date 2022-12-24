@@ -1,14 +1,19 @@
 package service.database;
 
 import java.sql.*;
+import java.sql.Date;
 import java.util.*;
 
 import controller.start.Initialization;
+import ui.Edit;
+import ui.Id;
 
 public class DTBActions {
     private static String customer_name, customer_address, seller_name, seller_address, product_name,date_sale,date_expiry, status ;
     private static int id_invoice,product_quantity;
     private static double price;
+
+    public static String test;
 
     public static void createInvoice() throws SQLException {
 
@@ -94,28 +99,34 @@ public class DTBActions {
         }
     }
 
-    public static void updateInvoice() throws SQLException {
-        Scanner id_invoice_in = new Scanner(System.in);
-        id_invoice=id_invoice_in.nextInt();
+    public static void updateInvoice(String customer_name, String customer_address, String seller_name, String seller_address, String product_name, String product_quantity, String price, Date date_sale, Date date_expiry, String status) throws SQLException {
         Statement stmt = DTBConnection.connect().createStatement();{
-            String get = "SELECT statusInvoice  FROM garage_michel WHERE idInvoice = "+id_invoice;
-            String sql = "UPDATE garage_michel SET sellerName = 'Baptise' WHERE idInvoice = "+id_invoice;
-            ResultSet rs = stmt.executeQuery(get);
-            while (rs.next()) {
-                System.out.println(rs.getString("statusInvoice"));
-                if(rs.getString("statusInvoice").equals("pending")){
-                    stmt.executeUpdate(sql);
-                    System.out.println("Invoice updated");
-                    break;
-
-                }else{
-                    System.out.println("Invoice transmitted, you can't update it");
-                    break;
-                }
-            }
-            Initialization.restart();
+            String sql = "UPDATE garage_michel SET customerName = '"+customer_name+"', customerAddress = '"+customer_address+"', sellerName = '"+seller_name+"', sellerAdress = '"+seller_address+"', product = '"+product_name+"', quantity = '"+product_quantity+"', price = '"+price+"', dateSale = '"+date_sale+"', dateExpiry = '"+date_expiry+"', statusInvoice = '"+status+"' WHERE idInvoice = "+ Edit.id;
+            stmt.executeUpdate(sql);
         }
     }
+
+    public static void getData() throws SQLException {
+        Statement stmt = DTBConnection.connect().createStatement();{
+            String sql = "SELECT * FROM garage_michel WHERE idInvoice = "+Edit.id;
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Edit.customerAddressStatic = rs.getString("customerAddress");
+                Edit.customerNameStatic = rs.getString("customerName");
+                Edit.sellerAddressStatic = rs.getString("sellerAdress");
+                Edit.sellerNameStatic = rs.getString("sellerName");
+                Edit.productStatic = rs.getString("product");
+                Edit.quantityStatic = String.valueOf(rs.getInt("quantity"));
+                Edit.priceStatic = String.valueOf(rs.getInt("price"));
+                Edit.dateSaleStatic = rs.getString("dateSale");
+                Edit.dateExpiryStatic = rs.getString("dateExpiry");
+                Edit.statusInvoiceStatic = rs.getString("statusInvoice");
+
+
+            }
+        }
+    }
+
 
     public static void getNameColumns(List<String> list) throws SQLException{
         Statement stmt = DTBConnection.connect().createStatement();{
@@ -142,4 +153,5 @@ public class DTBActions {
             }
         }
     }
+
 }

@@ -39,7 +39,6 @@ public class Initialization {
             case 1 -> createInvoice();
             case 2 -> displayAllInvoices();
             case 3 -> displayInvoice();
-            case 4 -> updateInvoice();
             default -> System.out.println("You choose to exit");
         }
 
@@ -59,11 +58,6 @@ public class Initialization {
         System.out.println("You choose to display an invoice");
         DTBActions.displayOneInvoice();
 
-    }
-
-    public static void updateInvoice() throws SQLException {
-        System.out.println("You choose to update an invoice");
-        DTBActions.updateInvoice();
     }
 
 }

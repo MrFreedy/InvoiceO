@@ -15,6 +15,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.event.*;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -111,6 +112,21 @@ public class Idle {
             @Override
             public void mouseExited(MouseEvent e) {
                 disconnectBtn.setBackground(Color.mako);
+            }
+        });
+        editBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Id.main(null);
+                    JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                    frame.dispose();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
             }
         });
     }
