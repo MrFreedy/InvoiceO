@@ -9,11 +9,8 @@
 package ui;
 
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
-import service.database.DTBActions;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import java.awt.event.*;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,6 +29,7 @@ public class Idle {
     private JButton button1;
     private JScrollPane scrollPane;
     private JTable table;
+    private JButton searchBtn;
 
     private static final List<String> columnNames= new ArrayList<>();
     private static final List<String> dataGet = new ArrayList<>();
@@ -100,6 +98,20 @@ public class Idle {
                 }
             }
         });
+
+        searchBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                searchBtn.setBackground(Color.azureRadiance);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                searchBtn.setBackground(Color.mako);
+            }
+        });
+
+
 
 
         disconnectBtn.addMouseListener(new MouseAdapter() {

@@ -127,6 +127,27 @@ public class DTBActions {
         }
     }
 
+    public static String getStatus() throws SQLException {
+        Statement stmt = DTBConnection.connect().createStatement();{
+            String sql = "SELECT statusInvoice FROM garage_michel WHERE idInvoice = "+Edit.id;
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Id.gettedStatus = rs.getString("statusInvoice");
+            }
+        }
+        return Edit.statusInvoiceStatic;
+    }
+
+    public static void searchInvoice() throws SQLException{
+        Statement stmt = DTBConnection.connect().createStatement();{
+            String sql = "SELECT * FROM garage_michel WHERE customerName LIKE '%Arthur%'";
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                System.out.println(rs.getInt("idInvoice") + "|\t" + rs.getString("customerName") + "|\t" + rs.getString("customerAddress") + "|\t" + rs.getString("sellerName") + "|\t" + rs.getString("sellerAdress") + "|\t" + rs.getString("product") + "|\t" + rs.getInt("quantity") + "|\t" + rs.getInt("price") + "|\t" + rs.getString("dateSale") + "|\t" + rs.getString("dateExpiry") + "|\t" + rs.getString("statusInvoice"));
+            }
+        }
+    }
+
 
     public static void getNameColumns(List<String> list) throws SQLException{
         Statement stmt = DTBConnection.connect().createStatement();{

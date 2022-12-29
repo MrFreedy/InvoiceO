@@ -12,23 +12,26 @@ import javax.swing.*;
 
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
 
+import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
 
 public class HomePage {
     JPanel panel1;
-    private JList list1;
+    public JList list1;
     private JButton addBtn;
     private JPanel sideMenu;
     private JButton settingsBtn;
     private JButton aboutBtn;
-    private JButton deleteBtn;
+
     private JButton editBtn;
     private JScrollPane scrollServerPane;
     public static String db_name_value = null;
@@ -57,29 +60,9 @@ public class HomePage {
         }
 
 
-        list1.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                super.focusGained(e);
-                editBtn.setEnabled(true);
-                deleteBtn.setEnabled(true);
-
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                super.focusLost(e);
-                editBtn.setEnabled(false);
-                deleteBtn.setEnabled(false);
-
-            }
-        });
-
-
         addBtn.setIconTextGap(25);
         aboutBtn.setIconTextGap(25);
         settingsBtn.setIconTextGap(25);
-        deleteBtn.setIconTextGap(25);
         editBtn.setIconTextGap(25);
 
         addBtn.addActionListener(new ActionListener() {
@@ -130,17 +113,25 @@ public class HomePage {
             }
         });
 
-        deleteBtn.addMouseListener(new MouseAdapter() {
+        editBtn.addActionListener(new ActionListener() {
             @Override
-            public void mouseEntered(MouseEvent e) {
-                super.mouseEntered(e);
-                deleteBtn.setBackground(Color.azureRadiance);
-            }
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                frame.dispose();
+                try {
+                    CSVReader reader = new CSVReader(new FileReader("src\\data\\database.csv"));
+                    List<String[]> r = reader.readAll();
+                    String[] row = r.get(list1.getSelectedIndex());
+                    EditServer.titleDatabaseStatic = row[0];
+                    EditServer.ipServerStatic = row[1];
+                    EditServer.portServerStatic = row[2];
+                    EditServer.dbNameStatic = row[3];
+                    EditServer.index = list1.getSelectedIndex();
+                    EditServer.main(null);
 
-            @Override
-            public void mouseExited(MouseEvent e) {
-                super.mouseExited(e);
-                deleteBtn.setBackground(Color.mako);
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                }
             }
         });
 
@@ -188,6 +179,90 @@ public class HomePage {
             }
         });
 
+        //right click list1
+        list1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    JPopupMenu popupMenu = new JPopupMenu();
+                    JMenuItem deleteItem = new JMenuItem("Delete");
+                    JMenuItem editItem = new JMenuItem("Edit");
+                    popupMenu.add(deleteItem);
+                    popupMenu.add(editItem);
+                    popupMenu.show(list1, e.getX(), e.getY());
+                    deleteItem.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            int index = list1.getSelectedIndex();
+                            DefaultListModel model = (DefaultListModel) list1.getModel();
+                            model.remove(index);
+                            try {
+                                CSVReader reader = new CSVReader(new FileReader("src\\data\\database.csv"));
+                                List<String[]> r = reader.readAll();
+                                r.remove(index);
+                                CSVWriter writer = new CSVWriter(new FileWriter("src\\data\\database.csv"));
+                                writer.writeAll(r);
+                                writer.close();
+                            } catch (Exception ex) {
+                                System.out.println(ex);
+                            }
+                        }
+                    });
+
+                    deleteItem.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+                            super.mouseEntered(e);
+                            deleteItem.setBackground(Color.azureRadiance);
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+                            super.mouseExited(e);
+                            deleteItem.setBackground(Color.mako);
+                        }
+                    });
+
+                    editItem.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                            frame.dispose();
+                            try {
+                                CSVReader reader = new CSVReader(new FileReader("src\\data\\database.csv"));
+                                List<String[]> r = reader.readAll();
+                                String[] row = r.get(list1.getSelectedIndex());
+                                EditServer.titleDatabaseStatic = row[0];
+                                EditServer.ipServerStatic = row[1];
+                                EditServer.portServerStatic = row[2];
+                                EditServer.dbNameStatic = row[3];
+                                EditServer.index = list1.getSelectedIndex();
+                                EditServer.main(null);
+
+                            } catch (Exception ex) {
+                                System.out.println(ex);
+                            }
+                        }
+                    });
+
+                    editItem.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+                            super.mouseEntered(e);
+                            editItem.setBackground(Color.azureRadiance);
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+                            super.mouseExited(e);
+                            editItem.setBackground(Color.mako);
+                        }
+                    });
+                }
+            }
+        });
+
         list1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -213,6 +288,8 @@ public class HomePage {
                     url = row[1]+":"+row[2]+"/"+row[3];
                     openLoginPage();
 
+                }else if (e.getClickCount()==1){
+                    editBtn.setEnabled(true);
                 }
             }
 

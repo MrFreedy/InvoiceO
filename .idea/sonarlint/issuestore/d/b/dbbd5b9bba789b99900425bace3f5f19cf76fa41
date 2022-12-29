@@ -1,0 +1,19 @@
+
+w
+java:S1104"\Make columnNamesArray a static final constant or non-public and provide accessors if needed.(áˆ¡ûÿÿÿÿ
+k
+java:S1104"PMake data a static final constant or non-public and provide accessors if needed.(¶¤²Ñÿÿÿÿÿ
+Q
+java:S1444"6Make this "public static columnNamesArray" field final(áˆ¡ûÿÿÿÿ
+E
+java:S1444"*Make this "public static data" field final(¶¤²Ñÿÿÿÿÿ
+3
+java:S2386"Make this member "protected".(ğ¢ÁÄ
+F
+java:S2386,"+Make member "columnNamesArray" "protected".(”Ú¨òÿÿÿÿÿ
+:
+java:S2386."Make member "data" "protected".(˜Éò“øÿÿÿÿ
+X
+java:S3252L"=Use static access with "java.awt.Frame" for "MAXIMIZED_BOTH".(Ê¤³ñúÿÿÿÿ
+U
+java:S1161P":Add the "@Override" annotation above this method signature(†§şıÿÿÿÿ

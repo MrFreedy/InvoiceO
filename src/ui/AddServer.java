@@ -140,6 +140,13 @@ public class AddServer {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panel1);
                 frame.dispose();
+                try {
+                    HomePage.main(null);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                } catch (CsvException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -235,7 +242,7 @@ public class AddServer {
         }
         JFrame frame = new JFrame("AddServer");
         frame.setContentPane(new AddServer().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ImageIcon img = new ImageIcon("src\\image\\database\\database-64.png");
         frame.setIconImage(img.getImage());
         frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));

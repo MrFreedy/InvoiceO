@@ -242,7 +242,6 @@ public class Edit {
             frame.setVisible(true);
             frame.setResizable(false);
             frame.requestFocus();
-            System.out.println(Id.gettedStatus);
 
         }
     }

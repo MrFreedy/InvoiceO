@@ -12,6 +12,7 @@ import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
 import service.database.DTBActions;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -22,15 +23,39 @@ public class Id {
     private JButton confirmButton;
     private JTextField idField;
     private JLabel title;
-
     public static String gettedStatus;
+    private void failMessage(){
+        JFrame frame_fail= new JFrame("Error");
+        ImageIcon icon = new ImageIcon("src\\image\\error\\error-32.png");
+        frame_fail.setIconImage(icon.getImage());
+        frame_fail.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        JLabel label_fail = new JLabel("<html><font color='red'>Invoice has been transmitted, cannot be edited !</font></html>");
+        JButton okBtn = new JButton("OK");
+        okBtn.setBackground(Color.azureRadiance);
+        okBtn.setForeground(Color.white);
+        okBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                frame_fail.dispose();
+            }
+        });
+        //put okBtn in South/East frame_success
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        buttonPanel.add(okBtn);
+        frame_fail.add(buttonPanel, BorderLayout.SOUTH);
+        okBtn.setPreferredSize(new Dimension(100, 30));
+        frame_fail.add(label_fail, BorderLayout.NORTH);
+        frame_fail.add(label_fail);
+        label_fail.setHorizontalAlignment(SwingConstants.CENTER);
+        frame_fail.setSize(250, 150);
+        frame_fail.setResizable(false);
+        frame_fail.setLocationRelativeTo(null);
+        frame_fail.setVisible(true);
 
-    private void getStatus() throws SQLException {
-        DTBActions.getData();
-        gettedStatus = DTBActions.test;
     }
+
     public Id() throws SQLException {
-        getStatus();
         idField.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -55,9 +80,15 @@ public class Id {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Edit.id= idField.getText();
-                    Edit.main(null);
-                    JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
-                    frame.dispose();
+                    DTBActions.getStatus();
+                    System.out.println(gettedStatus);
+                    if(gettedStatus.equals("Transmitted")){
+                        failMessage();
+                    }else{
+                        Edit.main(null);
+                        JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                        frame.dispose();
+                    }
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 } catch (SQLException ex) {

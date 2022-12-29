@@ -77,6 +77,16 @@ public class CreatorMenu {
 
             }
         });
+
+        createButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                createButton.setBackground(Color.azureRadiance);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                createButton.setBackground(Color.mako);
+            }
+        });
         radioButtonPending.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -139,10 +149,11 @@ public class CreatorMenu {
 
     public static void main(String[] args) {
         FlatOneDarkIJTheme.setup();
-        JFrame frame = new JFrame("CreatorMenu");
+        JFrame frame = new JFrame("Create Invoice");
         frame.setContentPane(new CreatorMenu().panel1);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(750,500);
+        frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
