@@ -111,6 +111,14 @@ public class Idle {
             }
         });
 
+        searchBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Search.main(null);
+                SwingUtilities.getWindowAncestor(panel1).dispose();
+            }
+        });
+
 
 
 

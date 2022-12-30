@@ -34,6 +34,7 @@ public class HomePage {
 
     private JButton editBtn;
     private JScrollPane scrollServerPane;
+    private JButton deleteBtn;
     public static String db_name_value = null;
 
     public static String url;
@@ -134,6 +135,39 @@ public class HomePage {
                 }
             }
         });
+
+        deleteBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                deleteBtn.setBackground(Color.azureRadiance);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                deleteBtn.setBackground(Color.mako);
+            }
+        });
+        deleteBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    CSVReader reader = new CSVReader(new FileReader("src\\data\\database.csv"));
+                    List<String[]> r = reader.readAll();
+                    r.remove(list1.getSelectedIndex());
+                    CSVWriter writer = new CSVWriter(new FileWriter("src\\data\\database.csv"));
+                    writer.writeAll(r);
+                    writer.close();
+                    JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                    frame.dispose();
+                    HomePage.main(null);
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                }
+            }
+        });
+
 
         settingsBtn.addMouseListener(new MouseAdapter() {
             @Override
@@ -290,6 +324,7 @@ public class HomePage {
 
                 }else if (e.getClickCount()==1){
                     editBtn.setEnabled(true);
+                    deleteBtn.setEnabled(true);
                 }
             }
 

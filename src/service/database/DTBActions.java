@@ -7,6 +7,7 @@ import java.util.*;
 import controller.start.Initialization;
 import ui.Edit;
 import ui.Id;
+import ui.Search;
 
 public class DTBActions {
     private static String customer_name, customer_address, seller_name, seller_address, product_name,date_sale,date_expiry, status ;
@@ -69,6 +70,41 @@ public class DTBActions {
             String sql= "INSERT INTO garage_michel (customerName, customerAddress, sellerName, sellerAdress, product, quantity, price, dateSale, dateExpiry, statusInvoice) VALUES ('"+customer_name+"', '"+customer_address+"', '"+seller_name+"', '"+seller_address+"', '"+product_name+"', '"+product_quantity+"', '"+price+"', '"+date_sale_sql+"', '"+date_expiry_sql+"', '"+status+"')";
             stmt.executeUpdate(sql);
         }
+    }
+
+    public static void searchInvoice(String customer_name, String customer_address, String seller_name, String seller_address,String product_name, String product_quantity, String price, java.sql.Date date_sale_sql, java.sql.Date date_expiry_sql, String status) throws SQLException{
+        Statement stmt = DTBConnection.connect().createStatement();{
+            String sql;
+            if(Search.isDateExpirySelected & Search.isDateExpirySelected){
+                sql = "SELECT * FROM garage_michel WHERE  customerName LIKE '%"+customer_name+"%' AND customerAddress LIKE '%"+customer_address+"%' AND sellerName LIKE '%"+seller_name+"%' AND sellerAdress LIKE '%"+seller_address+"%' AND product LIKE '%"+product_name+"%' AND quantity LIKE '%"+product_quantity+"%' AND price LIKE '%"+price+"%' AND dateSale LIKE '%"+date_sale_sql+"%' AND dateExpiry LIKE '%"+date_expiry_sql+"%'";
+            }else if(Search.isDateSaleSelected & !Search.isDateExpirySelected){
+                sql = "SELECT * FROM garage_michel WHERE  customerName LIKE '%"+customer_name+"%' AND customerAddress LIKE '%"+customer_address+"%' AND sellerName LIKE '%"+seller_name+"%' AND sellerAdress LIKE '%"+seller_address+"%' AND product LIKE '%"+product_name+"%' AND quantity LIKE '%"+product_quantity+"%' AND price LIKE '%"+price+"%' AND dateSale LIKE '%"+date_sale_sql+"%'";
+            }else if(!Search.isDateSaleSelected & Search.isDateExpirySelected){
+                sql = "SELECT * FROM garage_michel WHERE  customerName LIKE '%"+customer_name+"%' AND customerAddress LIKE '%"+customer_address+"%' AND sellerName LIKE '%"+seller_name+"%' AND sellerAdress LIKE '%"+seller_address+"%' AND product LIKE '%"+product_name+"%' AND quantity LIKE '%"+product_quantity+"%' AND price LIKE '%"+price+"%' AND dateExpiry LIKE '%"+date_expiry_sql+"%'";
+            }else {
+                sql = "SELECT * FROM garage_michel WHERE  customerName LIKE '%"+customer_name+"%' AND customerAddress LIKE '%"+customer_address+"%' AND sellerName LIKE '%"+seller_name+"%' AND sellerAdress LIKE '%"+seller_address+"%' AND product LIKE '%"+product_name+"%' AND quantity LIKE '%"+product_quantity+"%' AND price LIKE '%"+price+"%'";
+            }
+            if(Search.isStatusSelected){
+                sql = sql + " AND statusInvoice LIKE '%"+status+"%'";
+            }
+            ResultSet rs = stmt.executeQuery(sql);
+            Search.dataGet = new ArrayList<>();
+            while(rs.next()){
+                Search.dataGet.add(String.valueOf(rs.getInt("idInvoice")));
+                Search.dataGet.add(rs.getString("customerName"));
+                Search.dataGet.add(rs.getString("customerAddress"));
+                Search.dataGet.add(rs.getString("sellerName"));
+                Search.dataGet.add(rs.getString("sellerAdress"));
+                Search.dataGet.add(rs.getString("product"));
+                Search.dataGet.add(String.valueOf(rs.getInt("quantity")));
+                Search.dataGet.add(String.valueOf(rs.getDouble("price")));
+                Search.dataGet.add(String.valueOf(rs.getDate("dateSale")));
+                Search.dataGet.add(String.valueOf(rs.getDate("dateExpiry")));
+                Search.dataGet.add(rs.getString("statusInvoice"));
+
+            }
+        }
+
     }
 
 
@@ -137,17 +173,6 @@ public class DTBActions {
         }
         return Edit.statusInvoiceStatic;
     }
-
-    public static void searchInvoice() throws SQLException{
-        Statement stmt = DTBConnection.connect().createStatement();{
-            String sql = "SELECT * FROM garage_michel WHERE customerName LIKE '%Arthur%'";
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                System.out.println(rs.getInt("idInvoice") + "|\t" + rs.getString("customerName") + "|\t" + rs.getString("customerAddress") + "|\t" + rs.getString("sellerName") + "|\t" + rs.getString("sellerAdress") + "|\t" + rs.getString("product") + "|\t" + rs.getInt("quantity") + "|\t" + rs.getInt("price") + "|\t" + rs.getString("dateSale") + "|\t" + rs.getString("dateExpiry") + "|\t" + rs.getString("statusInvoice"));
-            }
-        }
-    }
-
 
     public static void getNameColumns(List<String> list) throws SQLException{
         Statement stmt = DTBConnection.connect().createStatement();{
