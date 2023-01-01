@@ -1,6 +1,4 @@
 
-<
-InvoiceO.iml,d\3\d33d7527279e0cee23a25fc83a77c9d413c98736
 A
 src/invoiceo.puml,a\2\a2c14f699671c29c551d4644aa10953295e4daca
 \
@@ -17,8 +15,6 @@ A
 src/ui/Color.java,e\b\eb6f9f01926a03c3c3409c13a388786703c53922
 E
 src/ui/AddServer.form,5\f\5f2a44638ad20e5e8b0c57e4bfe62ef29c211389
-w
-G.idea/sonarlint/issuestore/e/c/ecbf11ac6eebb71550a50f2fb580e1b08e1091ef,7\4\74111fee1ee215ede356d5bcd8f9ead141554c8a
 F
 src/ui/EditServer.form,b\2\b202e73f08cc3cff7af72702b1935564574845e7
 w
@@ -39,3 +35,11 @@ F
 src/ui/EditServer.java,4\5\45509de10224a53a45ccc588e792400bdf0012aa
 >
 src/ui/Id.java,9\0\90f98c25b7beb14eb0d92087f869e7a21be43f14
+X
+(src/controller/start/Initialization.java,9\4\943894ef7cd5ae6ab85f05ad67f9cd5792843030
+A
+src/ui/Login.form,e\c\ecbf11ac6eebb71550a50f2fb580e1b08e1091ef
+@
+src/ui/Idle.java,c\a\ca74c4b3f6711520c3ec22aadac303510c5989f3
+B
+src/ui/Search.java,b\3\b313e9e59290b8fda93c838a791b5b070d9da27d
