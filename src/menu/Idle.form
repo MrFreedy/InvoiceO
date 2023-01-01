@@ -23,7 +23,7 @@
         <children>
           <component id="33f0d" class="javax.swing.JLabel" binding="connectedLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="20"/>
                 <maximum-size width="-1" height="20"/>
               </grid>
@@ -148,7 +148,7 @@
               <horizontalAlignment value="4"/>
               <horizontalTextPosition value="2"/>
               <icon value="image/search/search-32.png"/>
-              <text value="Search An Invoice"/>
+              <text value="Search an Invoice"/>
             </properties>
           </component>
           <component id="dbf32" class="javax.swing.JSeparator">
@@ -171,21 +171,7 @@
           <background color="-14144460"/>
         </properties>
         <border type="none"/>
-        <children>
-          <scrollpane id="8f5e8" binding="scrollPane">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-            <border type="none"/>
-            <children>
-              <component id="55cfa" class="javax.swing.JTable" binding="table">
-                <constraints/>
-                <properties/>
-              </component>
-            </children>
-          </scrollpane>
-        </children>
+        <children/>
       </grid>
       <vspacer id="1cd25">
         <constraints>

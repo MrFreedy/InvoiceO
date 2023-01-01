@@ -1,4 +1,4 @@
-let filename = "logs.csv"
+let filename = "ocaml/data/logs.csv"
 
 let write message =
   let output_channel = open_out_gen [Open_creat; Open_append] 0o640 filename in

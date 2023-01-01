@@ -9,6 +9,7 @@
 package menu;
 
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
+import com.opencsv.exceptions.CsvException;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -27,8 +28,6 @@ public class Idle {
     private JButton disconnectBtn;
     private JButton createBtn;
     private JButton button1;
-    private JScrollPane scrollPane;
-    private JTable table;
     private JButton searchBtn;
 
     private static final List<String> columnNames= new ArrayList<>();
@@ -37,13 +36,6 @@ public class Idle {
 
     public Idle() {
         connectedLabel.setText("Connected to " + HomePage.db_name_value);
-        disconnectBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
-                frame.dispose();
-            }
-        });
 
         createBtn.addMouseListener(new MouseAdapter() {
             @Override
@@ -73,6 +65,20 @@ public class Idle {
             @Override
             public void mouseExited(MouseEvent e) {
                 editBtn.setBackground(Color.mako);
+            }
+        });
+
+        editBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Id.main(null);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
             }
         });
 
@@ -110,54 +116,38 @@ public class Idle {
                 searchBtn.setBackground(Color.mako);
             }
         });
-
         searchBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Search.main(null);
-                SwingUtilities.getWindowAncestor(panel1).dispose();
             }
         });
-
-
-
-
         disconnectBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
 
                 disconnectBtn.setBackground(Color.monza);
             }
-
             @Override
             public void mouseExited(MouseEvent e) {
                 disconnectBtn.setBackground(Color.mako);
             }
         });
-        editBtn.addActionListener(new ActionListener() {
+        disconnectBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                frame.dispose();
                 try {
-                    Id.main(null);
-                    JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
-                    frame.dispose();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                } catch (SQLException ex) {
+                    HomePage.main(null);
+                } catch (IOException | CsvException ex) {
                     throw new RuntimeException(ex);
                 }
-
             }
         });
     }
-
-
-
-
     public static void main(String[] args) {
-
         FlatOneDarkIJTheme.setup();
-
         JFrame frame = new JFrame("Idle");
         frame.setContentPane(new Idle().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -166,6 +156,5 @@ public class Idle {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
     }
 }

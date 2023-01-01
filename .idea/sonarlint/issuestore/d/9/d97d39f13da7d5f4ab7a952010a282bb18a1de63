@@ -1,64 +1,0 @@
-
-k	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯éâ×ÿÿÿÿÿ
-f	java:S117B"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñ¦í
-f	java:S117D"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯–Ø±
-k	java:S117F"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·î›—ÿÿÿÿÿ
-u
-java:S1488T"_Immediately return this expression instead of assigning it to the temporary variable "product".(€Éñª
-x
-java:S1488Y"]Immediately return this expression instead of assigning it to the temporary variable "statu".(³…ôïúÿÿÿÿ
-n
-java:S1104"SMake numbers a static final constant or non-public and provide accessors if needed.(çßùşÿÿÿÿ
-f
-java:S1104"PMake days a static final constant or non-public and provide accessors if needed.(³¢ïĞ
-m
-java:S1104"RMake months a static final constant or non-public and provide accessors if needed.(âÜŸ’üÿÿÿÿ
-H
-java:S1444"-Make this "public static numbers" field final(çßùşÿÿÿÿ
-@
-java:S1444"*Make this "public static days" field final(³¢ïĞ
-G
-java:S1444",Make this "public static months" field final(âÜŸ’üÿÿÿÿ
-l
-java:S3008""VRename this field "name_street" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çùë
-x
-java:S3008&"]Rename this field "ville_and_ZIP_code" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì¬º³şÿÿÿÿ
-8
-java:S2386"Make this member "protected".(çßùşÿÿÿÿ
-3
-java:S2386"Make this member "protected".(³¢ïĞ
-8
-java:S2386"Make this member "protected".(âÜŸ’üÿÿÿÿ
-D
-java:S21407")Use "java.util.Random.nextInt()" instead.(¦¤Ş‹ùÿÿÿÿ
-?
-java:S21409")Use "java.util.Random.nextInt()" instead.(À²İû
-D
-java:S2140;")Use "java.util.Random.nextInt()" instead.(£ºÛ—ıÿÿÿÿ
-D
-java:S2140@")Use "java.util.Random.nextInt()" instead.(¯éâ×ÿÿÿÿÿ
-?
-java:S2140B")Use "java.util.Random.nextInt()" instead.(Ñ¦í
-?
-java:S2140D")Use "java.util.Random.nextInt()" instead.(¯–Ø±
-D
-java:S2140F")Use "java.util.Random.nextInt()" instead.(·î›—ÿÿÿÿÿ
-D
-java:S2140M")Use "java.util.Random.nextInt()" instead.(‘Õøéúÿÿÿÿ
-D
-java:S2140N")Use "java.util.Random.nextInt()" instead.(ÕÅÿ‚üÿÿÿÿ
-?
-java:S2140T")Use "java.util.Random.nextInt()" instead.(€Éñª
-D
-java:S2140Y")Use "java.util.Random.nextInt()" instead.(³…ôïúÿÿÿÿ
->
-java:S2140^")Use "java.util.Random.nextInt()" instead.(ùî.
-?
-java:S2140d")Use "java.util.Random.nextInt()" instead.(ÃÅÇÔ
-?
-java:S2140e")Use "java.util.Random.nextInt()" instead.(º‡ø
-S	java:S106l"9Replace this use of System.out or System.err by a logger.(ã³©³ùÿÿÿÿ
-H
-java:S1128"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ
-Y
-java:S1128"CRemove this unused import 'java.util.concurrent.ThreadLocalRandom'.(¨ÏÙî

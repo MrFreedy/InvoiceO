@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import java.time.ZonedDateTime;
 
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
+import com.opencsv.exceptions.CsvException;
 import service.database.*;
 
 
@@ -28,7 +29,8 @@ public class Login {
     private JLabel userfield_title;
     private JLabel passwordfield_title;
     private JPasswordField passwordfield;
-    private JButton connectButton;
+    private JButton connectBtn;
+    private JButton cancelBtn;
 
     public static String username;
     public static String password;
@@ -40,7 +42,7 @@ public class Login {
         passwordfield.setEchoChar((char) 0);
         passwordfield.setText("Enter your password");
 
-        connectButton.addActionListener(new ActionListener() {
+        connectBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getUsername();
@@ -58,18 +60,16 @@ public class Login {
                 int year = currentTime.getYear();
                 try {
                     if(DTBConnection.connect()!= null){
-                        //write to a file the username and password
-                        String[] cmd = {"cmd.exe", "/c", "echo", "Logged at "+hour+":"+minute+":"+second+" on "+year+"/"+month+"/"+day+" with "+username, ">", ".\\log.log"};
+                        String[] cmd = {"cmd.exe", "/c", "echo", "Logged at "+hour+":"+minute+":"+second+" on "+year+"/"+month+"/"+day+" with "+username, ">", "log.txt"};
                         Process p = Runtime.getRuntime().exec(cmd);
                         p.waitFor();
-                        String[] file = {"ocaml", "C:\\Users\\arthu\\Documents\\GitHub\\InvoiceO\\ocaml\\src\\main.ml"};
+                        String[] file = {"ocaml", "ocaml\\src\\main.ml"};
                         Process p2 = Runtime.getRuntime().exec(file);
                         BufferedReader in = new BufferedReader(new InputStreamReader(p2.getInputStream()));
                         String line;
                         while ((line = in.readLine()) != null) {
                             System.out.println(line);
                         }
-
                         Idle.main(null);
                         JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
                         frame.dispose();
@@ -98,21 +98,46 @@ public class Login {
 
         });
 
-        connectButton.addMouseListener(new MouseAdapter() {
+        connectBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                connectButton.setBackground(menu.Color.azureRadiance);
+                connectBtn.setBackground(menu.Color.azureRadiance);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                connectButton.setBackground(menu.Color.mako);
+                connectBtn.setBackground(menu.Color.mako);
             }
         });
 
+        cancelBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    HomePage.main(null);
+                } catch (IOException | CsvException ex) {
+                    throw new RuntimeException(ex);
+                }
+                JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                frame.dispose();
+            }
+        });
 
+        cancelBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                cancelBtn.setBackground(menu.Color.monza);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                cancelBtn.setBackground(menu.Color.mako);
+            }
+        });
         usernamefield.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {

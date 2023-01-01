@@ -48,7 +48,7 @@ public class Id {
         frame_fail.add(label_fail, BorderLayout.NORTH);
         frame_fail.add(label_fail);
         label_fail.setHorizontalAlignment(SwingConstants.CENTER);
-        frame_fail.setSize(250, 150);
+        frame_fail.setSize(300, 150);
         frame_fail.setResizable(false);
         frame_fail.setLocationRelativeTo(null);
         frame_fail.setVisible(true);

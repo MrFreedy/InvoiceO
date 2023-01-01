@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="InvoiceO:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/InvoiceO_jar</output-path>
+    <root id="archive" name="InvoiceO.jar">
+      <element id="module-output" name="InvoiceO" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/depencies/flatlaf-intellij-themes-2.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/depencies/commons-lang3-3.12.0.wso2v1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/depencies/mysql-connector-j-8.0.31.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/depencies/flatlaf-2.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/depencies/opencsv-5.7.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/depencies/jdatepicker-1.4.0-SNAPSHOT.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

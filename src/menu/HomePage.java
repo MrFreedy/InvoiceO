@@ -22,7 +22,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-
 public class HomePage {
     JPanel panel1;
     public JList list1;
@@ -42,7 +41,6 @@ public class HomePage {
 
 
     public HomePage() throws IOException, CsvException {
-        //add button to scrollServer from csv file
 
         try{
             CSVReader reader = new CSVReader(new FileReader("src\\data\\database.csv"));
@@ -320,6 +318,8 @@ public class HomePage {
                     String[] row = r.get(index);
                     url = row[1]+":"+row[2]+"/"+row[3];
                     openLoginPage();
+                    JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
+                    frame.dispose();
 
                 }else if (e.getClickCount()==1){
                     editBtn.setEnabled(true);
