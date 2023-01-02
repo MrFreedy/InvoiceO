@@ -1,4 +1,8 @@
-package service.database;
+/*
+ * Copyright (c) 2022-2023.
+ * Lenne Arthur
+ */
+package domain;
 
 import java.sql.*;
 import java.sql.Date;

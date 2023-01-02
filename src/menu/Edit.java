@@ -1,14 +1,13 @@
 /*
- * Copyright (c) 2022-2023. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
- * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
- * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
- * Vestibulum commodo. Ut rhoncus gravida arcu.
+ * Copyright (c) 2022-2023.
+ * Lenne Arthur
  */
 
 package menu;
 
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
+import domain.DTBActions;
+import domain.DTBConnection;
 import org.jdatepicker.impl.JDatePickerImpl;
 
 import javax.swing.*;
@@ -17,8 +16,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import service.database.*;
 
 public class Edit {
     private JPanel panel1;

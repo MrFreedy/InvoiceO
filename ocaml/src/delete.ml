@@ -1,3 +1,4 @@
+(*Copyright (c) 2022-2023. Lenne Arthur*)
 let trash_file = "log.txt";;
 let delete=
   try

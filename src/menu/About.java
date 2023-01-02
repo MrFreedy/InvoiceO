@@ -1,9 +1,6 @@
 /*
- * Copyright (c) 2022-2023. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
- * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
- * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
- * Vestibulum commodo. Ut rhoncus gravida arcu.
+ * Copyright (c) 2022-2023.
+ * Lenne Arthur
  */
 
 package menu;
@@ -25,14 +22,7 @@ public class About {
     private JButton donateBtn;
     private JTextPane version100TextPane;
 
-
-
-
-
     public About() {
-
-
-
         version100TextPane.setEditable(false);
         linkLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
@@ -74,7 +64,7 @@ public class About {
         }
         JFrame frame = new JFrame("About");
         frame.setContentPane(new About().panel1);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         frame.setSize(680, 440);
         frame.setVisible(true);

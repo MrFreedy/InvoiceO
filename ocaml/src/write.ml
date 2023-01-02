@@ -1,3 +1,4 @@
+(*Copyright (c) 2022-2023. Lenne Arthur*)
 let filename = "ocaml/data/logs.csv"
 
 let write message =

@@ -1,25 +1,20 @@
 /*
- * Copyright (c) 2022-2023. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
- * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
- * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
- * Vestibulum commodo. Ut rhoncus gravida arcu.
+ * Copyright (c) 2022-2023.
+ * Lenne Arthur
  */
 
 package menu;
 
+import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
+import com.opencsv.exceptions.CsvException;
+import dao.Dao;
+import domain.DTBConnection;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
+import java.io.IOException;
 import java.sql.SQLException;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.time.ZonedDateTime;
-
-import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme;
-import com.opencsv.exceptions.CsvException;
-import service.database.*;
 
 
 public class Login {
@@ -51,25 +46,10 @@ public class Login {
                 DTBConnection.user = username;
                 DTBConnection.password = password;
                 DTBConnection.url = url;
-                ZonedDateTime currentTime = ZonedDateTime.now();
-                int hour = currentTime.getHour();
-                int minute = currentTime.getMinute();
-                int second = currentTime.getSecond();
-                int day = currentTime.getDayOfMonth();
-                int month = currentTime.getMonthValue();
-                int year = currentTime.getYear();
+
                 try {
                     if(DTBConnection.connect()!= null){
-                        String[] cmd = {"cmd.exe", "/c", "echo", "Logged at "+hour+":"+minute+":"+second+" on "+year+"/"+month+"/"+day+" with "+username, ">", "log.txt"};
-                        Process p = Runtime.getRuntime().exec(cmd);
-                        p.waitFor();
-                        String[] file = {"ocaml", "ocaml\\src\\main.ml"};
-                        Process p2 = Runtime.getRuntime().exec(file);
-                        BufferedReader in = new BufferedReader(new InputStreamReader(p2.getInputStream()));
-                        String line;
-                        while ((line = in.readLine()) != null) {
-                            System.out.println(line);
-                        }
+                        Dao.main(null);
                         Idle.main(null);
                         JFrame frame= (JFrame) SwingUtilities.getWindowAncestor(panel1);
                         frame.dispose();

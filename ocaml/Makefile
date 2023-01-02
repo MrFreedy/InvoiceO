@@ -1,7 +1,6 @@
 SRC_OCAML = write.ml delete.ml read.ml main.ml
 
 SOURCES = $(addprefix src/,$(SRC_OCAML))
-PACKS = csv unix
 RESULT = main.exe
 all: byte-code
 
